@@ -1,0 +1,38 @@
+using System;
+
+namespace homework1._3
+{
+    class Converter
+    {
+        double usd, eur;
+        public Converter(double usd,double eur)
+        {
+            this.usd = usd;
+            this.eur = eur;
+        }
+        public double UsdToUah(double usd)
+        {
+            return this.usd * usd;
+        }
+        public double EurToUah(double eur)
+        {
+            return this.eur * eur;
+        }
+        public double UahToUsd(double uah)
+        {
+            return uah / this.usd;
+        }
+        public double UahToEur(double uah)
+        {
+            return uah / this.eur;
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Converter c = new Converter(27, 31);
+            Console.WriteLine($"80 uah in usd: {c.UahToUsd(80)}, 100 uah in eur: {c.UahToEur(100)}; 10 usd in uah: {c.UsdToUah(10)}, 20 eur in uah: {c.EurToUah(20)}.");
+        }
+    }
+}
