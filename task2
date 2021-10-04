@@ -1,0 +1,106 @@
+using System;
+using System.Collections.Generic;
+
+namespace homework1._1
+{
+    abstract class Student
+    {
+        internal string name;
+        internal string state;
+        protected Student(string name)
+        {
+            this.name = name;
+            this.state = "";
+        }
+        public abstract void Study();
+        public void Read()
+        {
+            state = "Read";
+        }
+        public void Write()
+        {
+            state = "Write";
+        }
+        public void Relax()
+        {
+            state = "Relax";
+        }
+    }
+    class GoodStudent : Student
+    {
+        public GoodStudent(string name):base(name)
+        {
+            this.state = "good";
+        }
+        public override void Study()
+        {
+            Read();
+            Write();
+            Read();
+            Write();
+            Relax();
+        }
+    }
+    class BadStudent : Student
+    {
+        public BadStudent(string name) : base(name)
+        {
+            this.state = "bad";
+        }
+        public override void Study()
+        {
+            Relax();
+            Relax();
+            Relax();
+            Relax();
+            Read();
+        }
+    }
+    class Group
+    {
+        string NameOfGroup;
+        List<Student> ListOfStudents = new List<Student>(3);
+        public Group(string NameOfGroup)
+        {
+            this.NameOfGroup = NameOfGroup;
+        }
+        public void AddStudent(Student st)
+        {
+            if (this.ListOfStudents.Count < 3)
+            {
+                this.ListOfStudents.Add(st);
+            }
+        }
+        public void GetInfo()
+        {
+            Console.WriteLine($"{NameOfGroup}");
+            foreach(Student i in this.ListOfStudents)
+            {
+                Console.WriteLine($"{i.name}");
+            }
+        }
+        public void GetFullInfo()
+        {
+            Console.WriteLine($"{NameOfGroup}");
+            foreach (Student i in this.ListOfStudents)
+            {
+                Console.WriteLine($"{i.name}- {i.state}");
+            }
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Student s1 = new GoodStudent("Pika Ramsey"),
+                s2 = new BadStudent("Gerbern Muraro"),
+                s3 = new GoodStudent("Doris Simonsen");
+            Group g = new Group("12");
+            g.AddStudent(s1);
+            g.AddStudent(s2);
+            g.AddStudent(s3);
+            g.GetInfo();
+            g.GetFullInfo();
+        }
+    }
+}
