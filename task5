@@ -4,8 +4,8 @@ namespace homework3._5
 {
     abstract class Figure
     {
-        public abstract double per();
-        public abstract double area();
+        public virtual double per() { return 0; }
+        public virtual double area() { return 0; }
         public void WriteRes()
         {
             Console.WriteLine($"per={this.per()} and area={this.area()}");
