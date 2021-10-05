@@ -15,22 +15,22 @@ namespace homework1._1
         public abstract void Study();
         public void Read()
         {
-            state = "Read";
+            state = state + "Read ";
         }
         public void Write()
         {
-            state = "Write";
+            state = state + "Write ";
         }
         public void Relax()
         {
-            state = "Relax";
+            state = state + "Relax ";
         }
     }
     class GoodStudent : Student
     {
         public GoodStudent(string name):base(name)
         {
-            this.state = "good";
+            this.state = "good ";
         }
         public override void Study()
         {
@@ -45,7 +45,7 @@ namespace homework1._1
     {
         public BadStudent(string name) : base(name)
         {
-            this.state = "bad";
+            this.state = "bad ";
         }
         public override void Study()
         {
@@ -99,6 +99,9 @@ namespace homework1._1
             g.AddStudent(s1);
             g.AddStudent(s2);
             g.AddStudent(s3);
+            s1.Study();
+            s2.Study();
+            s3.Study();
             g.GetInfo();
             g.GetFullInfo();
         }
