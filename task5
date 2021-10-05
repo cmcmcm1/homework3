@@ -1,0 +1,116 @@
+using System;
+
+namespace homework3._5
+{
+    abstract class Figure
+    {
+        public abstract double per();
+        public abstract double area();
+        public void WriteRes()
+        {
+            Console.WriteLine($"per={this.per()} and area={this.area()}");
+        }
+    }
+    class Triangle : Figure
+    {
+        double s1, s2, s3;//sides of Triangle
+        public Triangle(double a,double b,double c)
+        {
+            this.s1 = a;
+            this.s2 = b;
+            this.s3 = c;
+        }
+        public override double per()
+        {
+            return (this.s1 + this.s2 + this.s3);
+        }
+        public override double area()
+        {
+            double p = this.per() / 2;
+            return Math.Sqrt(p * (p - this.s1) * (p - this.s2) * (p - this.s3));
+        }
+    }
+    class Circle : Figure
+    {
+        double r;//radius of Circle
+        public Circle(double r)
+        {
+            this.r = r;
+        }
+        public override double per()
+        {
+            return (2 * Math.PI * this.r);
+        }
+        public override double area()
+        {
+            return (Math.PI * this.r * this.r);
+        }
+    }
+    class Rectangle : Figure
+    {
+        double s1, s2;//sides of Rectangle
+        public Rectangle(double a,double b)
+        {
+            this.s1 = a;
+            this.s2 = b;
+        }
+        public override double per()
+        {
+            return 2 * (this.s1 + this.s2);
+        }
+        public override double area()
+        {
+            return this.s1 * this.s2;
+        }
+    }
+    class Square : Figure
+    {
+        double side;//side of Square
+        public Square(double a)
+        {
+            this.side = a;
+        }
+        public override double per()
+        {
+            return 4 * this.side;
+        }
+        public override double area()
+        {
+            return this.side * this.side;
+        }
+    }
+    class Rhombus : Figure
+    {
+        double side;//side of rhombus
+        double angle;//angle of rhombus in degrees
+        public Rhombus(double side,double angle)
+        {
+            this.side = side;
+            this.angle = angle;
+        }
+        public override double per()
+        {
+            return 4 * this.side;
+        }
+        public override double area()
+        {
+            return this.side * this.side * Math.Sin(angle * Math.PI / 180);
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Figure tr = new Triangle(3, 4, 5);
+            Figure c = new Circle(3);
+            Figure rec = new Rectangle(3, 4);
+            Figure sq = new Square(4);
+            Figure rh = new Rhombus(4, 30);
+            tr.WriteRes();
+            c.WriteRes();
+            rec.WriteRes();
+            sq.WriteRes();
+            rh.WriteRes();
+        }
+    }
+}
