@@ -31,8 +31,16 @@ namespace homework1._3
     {
         static void Main(string[] args)
         {
-            Converter c = new Converter(27, 31);
-            Console.WriteLine($"80 uah in usd: {c.UahToUsd(80)}, 100 uah in eur: {c.UahToEur(100)}; 10 usd in uah: {c.UsdToUah(10)}, 20 eur in uah: {c.EurToUah(20)}.");
+            double usd = Convert.ToDouble(Console.ReadLine()), eur = Convert.ToDouble(Console.ReadLine());
+            if(usd>0 && eur > 0)
+            {
+                Converter c = new Converter(usd, eur);
+                Console.WriteLine($"80 uah in usd: {c.UahToUsd(80)}, 100 uah in eur: {c.UahToEur(100)}; 10 usd in uah: {c.UsdToUah(10)}, 20 eur in uah: {c.EurToUah(20)}.");
+            }
+            else
+            {
+                Console.WriteLine("error");
+            }
         }
     }
 }
